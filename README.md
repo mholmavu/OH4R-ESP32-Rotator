@@ -10,7 +10,8 @@ Currently only azimuthal support implemented
 
 ## Overview of MQTT commands
 
-The MQTT topics will follow a hierarchical structure to ensure clarity and organization. The base topic will be `rotator/**identification**/`.
+The MQTT topics will follow a hierarchical structure to ensure clarity and organization. The base topic will be `rotator/**id**/`.
+Each device will have unique ID when joining / subsribing to MQTT bus
 
 ### Command Topics
 Commands will be published to control the antenna rotator. The command topics will include:
@@ -26,20 +27,20 @@ Commands will be published to control the antenna rotator. The command topics wi
 ### Status Topics
 Status updates from the antenna rotator will be published to the following topics:
 
-- `hamradio/rotator/status/position`: Current position of the antenna.
-- `hamradio/rotator/status/status`: Current status of the rotator (e.g., rotating, stopped, error).
-- `hamradio/rotator/status/error`: Any error messages or codes.
+- `/rotator/id/status/position`: Current position of the antenna.
+- `/rotator/id/status/status`: Current status of the rotator (e.g., rotating, stopped, error).
+- `/rotator/id/status/error`: Any error messages or codes.
 
 ### Configuration Topics
 Configuration settings for the antenna rotator will be published and subscribed to the following topics:
 
-- `hamradio/rotator/config/`: 
+- `/rotator/id/config/`: 
 
 
 ## MQTT Commands
 
 ### Rotate Command
-**Topic:** `rotator/rotator_id/command/move_azimuth`  
+**Topic:** `rotator/id/command/move_azimuth`  
 **Payload:** JSON object containing the direction and angle to rotate.
 ```json
 {  
