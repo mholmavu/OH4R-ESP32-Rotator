@@ -17,6 +17,7 @@ Each device will have unique ID when joining / subsribing to MQTT bus
 Commands will be published to control the antenna rotator. The command topics will include:
 
 - `rotator/id/command/move_azimuth`: Command to rotate the antenna to heading in payload.
+- - `/rotator/id/command/read_azimuth`: Ask current Azimuth - will be reported via status message
 - `/rotator/id/command/stop`: Command to stop the antenna rotation.
 - `/rotator/id/command/rotate_CW`: Command to turn to CW until STOP command
 - `/rotator/id/command/rotate_CCW`: Command to turn to CCW until STOP command
@@ -27,6 +28,7 @@ Commands will be published to control the antenna rotator. The command topics wi
 ### Status Topics
 Status updates from the antenna rotator will be published to the following topics:
 
+- `/rotator/id/status`: Full JSON status message
 - `/rotator/id/status/position`: Current position of the antenna.
 - `/rotator/id/status/status`: Current status of the rotator (e.g., rotating, stopped, error).
 - `/rotator/id/status/error`: Any error messages or codes.
@@ -34,8 +36,10 @@ Status updates from the antenna rotator will be published to the following topic
 ### Configuration Topics
 Configuration settings for the antenna rotator will be published and subscribed to the following topics:
 
-- `/rotator/id/config/`: 
-
+- `/rotator/id/config/max_azimuth`:
+- `/rotator/id/config/min_azimuth`:
+- `/rotator/id/config/stall`: Enable or disable stall recognition (moving, but antenna is not moving)
+- 
 
 ## MQTT Commands
 
